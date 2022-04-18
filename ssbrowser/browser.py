@@ -26,13 +26,13 @@ class browser:
         self.profile = profile
         self.log = log
     
-    def open_firefox(self):
+    def open_firefox(self, link):
         """Opening Firefox Browser"""
         try:
             options = Options()
             options.headless = self.headless
-            self.driver = webdriver.Firefox(options=options, executable_path=self.path_firefox, firefox_profile=self.profile_firefox)
-            self.driver.get(self.linkdibuka)
+            self.driver = webdriver.Firefox(options=options, executable_path=self.gcdriver, firefox_profile=self.profile)
+            self.driver.get(link)
             self.driver.maximize_window()
             self.act = ActionChains(self.driver)
             return True
@@ -41,14 +41,14 @@ class browser:
                 print(e)
             return False
     
-    def open_chrome_remote(self, hostport:str):
+    def open_chrome_remote(self, hostport:str, link):
         """Opening Chrome Browser with remote debug just gift debuggerAddress host:port ex: 127.0.0.1:7777"""
         try:
             option = webdriver.ChromeOptions() 
             option.add_experimental_option("debuggerAddress", hostport)
-            self.driver = webdriver.Chrome(options=option, executable_path=self.path_chrome)
+            self.driver = webdriver.Chrome(options=option, executable_path=self.gcdriver)
             self.driver.maximize_window()
-            self.driver.get(self.linkdibuka)
+            self.driver.get(link)
             self.act = ActionChains(self.driver)
             return True
         except Exception as e:
@@ -60,9 +60,9 @@ class browser:
         """Opening Chrome Browser"""
         try:
             option = webdriver.ChromeOptions() 
-            option.headless = self.headles_mode
+            option.headless = self.headless
             option.add_experimental_option("excludeSwitches", ["enable-logging"])
-            self.driver = webdriver.Chrome(options=option, executable_path=self.path_chrome)
+            self.driver = webdriver.Chrome(options=option, executable_path=self.gcdriver)
             self.driver.maximize_window()
             self.driver.get(link)
             self.act = ActionChains(self.driver)
