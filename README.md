@@ -1,5 +1,5 @@
 # Selenium Python Class
-Simple class for automation browser for python and selenium .
+Simple class for automation browser using python and selenium .
 
 Usage:
 - Clone this repo
