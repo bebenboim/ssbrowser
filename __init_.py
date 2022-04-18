@@ -1,5 +1,4 @@
 # Created By Ben Saputra
-# 2020 boim browser v1.5 -> Update v2.1 2022 Support Chrome and Add to Git
 
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
@@ -86,6 +85,7 @@ class browser:
                 self.driver.add_cookie(cookie)
     
     def open_link(self, link):
+        """opening new link eg:https://google.com"""
         try:
             self.driver.get(link)
             return self.driver.title
@@ -95,6 +95,7 @@ class browser:
             return False
     
     def get_source_page(self):
+        """to get source page"""
         try:
             return self.driver.page_source
         except Exception as e:
@@ -103,6 +104,7 @@ class browser:
             return False
     
     def close_browser(self):
+        """Close Browser"""
         try:
             self.driver.close()
             return True
@@ -242,6 +244,7 @@ class browser:
             return False
     
     def move_default_iframe(self):
+        """Move to Default iframe"""
         self.driver.switch_to.default_content()
 
     def wait_until_show(self, xpath, timeout=15):
