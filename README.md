@@ -1,2 +1,2 @@
-# boimbrowser
-Simple automation browser for python and selenium 
+# Selenium Python Class
+Simple class for automation browser for python and selenium .
